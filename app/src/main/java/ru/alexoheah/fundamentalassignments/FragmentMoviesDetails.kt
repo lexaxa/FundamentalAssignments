@@ -8,8 +8,16 @@ import androidx.fragment.app.Fragment
 
 class FragmentMoviesDetails: Fragment() {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_movies_details, container, false)
+        return inflater.inflate(R.layout.fragment_movies_details_copy, container, false)
     }
 
 }
