@@ -9,7 +9,7 @@
     tools:context=".MainActivity"
     android:background="@color/black"
     android:overScrollMode="never"
-    tools:showIn="@layout/fragment_movies_details_copy"
+    tools:showIn="@layout/fragment_movies_details"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -88,91 +88,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvMovieStoryDescription" />
 
-        <ImageView
-            android:id="@+id/ivActor1"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:contentDescription="actor1"
-            android:src="@drawable/actor1"
-            app:layout_constraintEnd_toStartOf="@+id/ivActor2"
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvMovieCastTitle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvMovieCastTitle" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            tools:listitem="@layout/view_holder_actor"
+            android:id="@+id/rv_actors"
+            >
 
-        <ImageView
-            android:id="@+id/ivActor2"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:contentDescription="actor2"
-            android:src="@drawable/actor2"
-            app:layout_constraintEnd_toStartOf="@+id/ivActor3"
-            app:layout_constraintStart_toEndOf="@+id/ivActor1"
-            app:layout_constraintTop_toBottomOf="@id/tvMovieCastTitle" />
-
-        <ImageView
-            android:id="@+id/ivActor3"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:contentDescription="actor3"
-            android:src="@drawable/actor3"
-            app:layout_constraintEnd_toStartOf="@+id/ivActor4"
-            app:layout_constraintStart_toEndOf="@+id/ivActor2"
-            app:layout_constraintTop_toBottomOf="@+id/tvMovieCastTitle" />
-
-        <ImageView
-            android:id="@+id/ivActor4"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:contentDescription="actor4"
-            android:src="@drawable/actor4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ivActor3"
-            app:layout_constraintTop_toBottomOf="@id/tvMovieCastTitle" />
-
-        <TextView
-            android:id="@+id/tvActor1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Robert Downey Jr."
-            android:textColor="#D8D8D8"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="@id/ivActor1"
-            app:layout_constraintRight_toRightOf="@id/ivActor1"
-            app:layout_constraintTop_toBottomOf="@id/ivActor1" />
-
-        <TextView
-            android:id="@+id/tvActor2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Cris Evans"
-            android:textColor="#D8D8D8"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="@id/ivActor2"
-            app:layout_constraintRight_toRightOf="@id/ivActor2"
-            app:layout_constraintTop_toBottomOf="@id/ivActor2" />
-
-        <TextView
-            android:id="@+id/tvActor3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Mark Ruffalo"
-            android:textColor="#D8D8D8"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="@id/ivActor3"
-            app:layout_constraintRight_toRightOf="@id/ivActor3"
-            app:layout_constraintTop_toBottomOf="@id/ivActor3" />
-
-        <TextView
-            android:id="@+id/tvActor4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Chris Hemsworth"
-            android:textColor="#D8D8D8"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="@id/ivActor4"
-            app:layout_constraintRight_toRightOf="@id/ivActor4"
-            app:layout_constraintTop_toBottomOf="@id/ivActor4" />
-
-
+        </androidx.recyclerview.widget.RecyclerView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>
