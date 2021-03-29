@@ -1,8 +1,9 @@
 package ru.alexoheah.fundamentalassignments.model
 
-data class Actor(
-    val poster: Int,
-    val name: String
-) {
+import java.io.Serializable
 
-}
+data class Actor(
+    val id: Int,
+    val name: String,
+    val imageUrl: String,
+) : Serializable

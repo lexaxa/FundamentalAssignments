@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.Target.SIZE_ORIGINAL
 import ru.alexoheah.fundamentalassignments.FragmentMoviesDetails
 import ru.alexoheah.fundamentalassignments.MovieListListener
 import ru.alexoheah.fundamentalassignments.R
@@ -47,13 +49,19 @@ class MovieAdapter(
             itemView.setOnClickListener {
                 listener.onClicked(FragmentMoviesDetails.newInstance(movie.id))
             }
-            poster.setImageResource(movie.poster)
-            name.text = movie.name
-            age.text = movie.age.toString()
-            category.text = movie.category
+
+            Glide.with(itemView)
+                .load(movie.imageUrl)
+                .override(SIZE_ORIGINAL, SIZE_ORIGINAL)
+                .into(poster)
+
+
+            name.text = movie.title
+            age.text = movie.pgAge.toString()
+            category.text = movie.genres.firstOrNull()?.name
             popular.setImageResource(R.drawable.ic_star_filled)
-            reviewsCount.text = movie.reviewsCount.toString()
-            duration.text = movie.duration.toString()
+            reviewsCount.text = movie.reviewCount.toString()
+            duration.text = movie.runningTime.toString()
         }
 
     }

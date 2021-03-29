@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import ru.alexoheah.fundamentalassignments.R
 import ru.alexoheah.fundamentalassignments.model.Actor
 
@@ -36,7 +37,9 @@ class ActorAdapter(
 
         fun bind(actor: Actor) {
 
-            poster.setImageResource(actor.poster)
+            Glide.with(itemView)
+                .load(actor.imageUrl)
+                .into(poster)
             name.text = actor.name
         }
     }

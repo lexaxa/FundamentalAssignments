@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         if(savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.frame_layout, FragmentMoviesList(), FragmentMoviesList::class.java.simpleName)
+                    .replace(R.id.frame_layout, FragmentMoviesList.newInstance(), FragmentMoviesList::class.java.simpleName)
                     .commit()
         }
     }
