@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -16,7 +18,7 @@ import kotlinx.coroutines.runBlocking
 import ru.alexoheah.fundamentalassignments.adapters.ActorAdapter
 import ru.alexoheah.fundamentalassignments.data.JsonMovieRepository
 import ru.alexoheah.fundamentalassignments.model.Movie
-import ru.alexoheah.fundamentalassignments.utils.DataUtil
+import ru.alexoheah.fundamentalassignments.viewmodel.MovieViewModel
 
 
 class FragmentMoviesDetails : Fragment(R.layout.fragment_movies_details) {
@@ -24,6 +26,8 @@ class FragmentMoviesDetails : Fragment(R.layout.fragment_movies_details) {
     private val movieId by lazy {
         arguments?.getInt("MOVIE_ID")
     }
+    private var viewModel: MovieViewModel? = null
+    private var liveMovie = MutableLiveData<Movie>()
 
     companion object {
         fun newInstance(movieId: Int) =
@@ -46,6 +50,9 @@ class FragmentMoviesDetails : Fragment(R.layout.fragment_movies_details) {
         toolbar?.setNavigationOnClickListener { activity?.onBackPressed() }
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_actors)
         var movie: Movie? = null //movieId?.let { DataUtil.generateMovies().get(it) }
+        viewModel = ViewModelProvider(this).get(MovieViewModel::class.java).also {
+            it.loadMovie(movieId)
+        }
         runBlocking {
             launch {
                 if (movieId != null)

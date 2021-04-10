@@ -45,7 +45,7 @@ internal class JsonMovieRepository(private val context: Context) : MovieReposito
     }
 
     private fun readAssetFileToString(fileName: String): String {
-        val stream = context.assets.open(fileName)
+        val stream = javaClass.getResourceAsStream("/assets/$fileName")
         return stream.bufferedReader().readText()
     }
 
